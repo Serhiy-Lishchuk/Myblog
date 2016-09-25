@@ -11,7 +11,7 @@ SECRET_KEY = config.get('AUTH', 'SECRET_KEY')
 USERNAME = config.get('AUTH', 'USERNAME')
 PASSWORD = config.get('AUTH', 'PASSWORD')
 
-APP_DIR = path.rsplit('/Myblog', 1)[0]
+APP_DIR = path.rsplit('/Flaskblog', 1)[0]
 UPLOAD_MUSIC = os.path.join(APP_DIR, config.get('PATH', 'UPLOAD_MUSIC'))
 MUSIC_EXTENSIONS = set(['mp3'])
 UPLOAD_IMAGE = os.path.join(APP_DIR, config.get('PATH', 'UPLOAD_IMAGE'))
