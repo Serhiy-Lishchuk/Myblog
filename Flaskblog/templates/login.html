@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Log in
+{% endblock %}
+
+{% block content %}
+    <center>
+        <ul style=" width: 450px">
+        <h1 class="form-signin-heading">My blog</h1>
+        <h2 class="form-signin-heading">Please log in</h2>
+        {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+        <form action="{{ url_for('login_in') }}" method=post>
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input name="username" type="text" id="inputUsername" class="form-control" placeholder="Enter username" required autofocus>
+          <h1></h1>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+        </form>
+        </ul>
+    </center>
+
+{% endblock %}
