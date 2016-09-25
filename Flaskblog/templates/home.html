@@ -5,6 +5,9 @@ Python
 {% endblock %}
 
 {% block content %}
+    {% for message in get_flashed_messages() %}
+                                <div class="flash">{{ message }}</div>
+{% endfor %}
 {% if session.logged_in %}
     <h3>Admin</h3>
 <a href="{{ url_for('logout') }}"><button type="submit" class="btn btn-danger">log out</button></a>

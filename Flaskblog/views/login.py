@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request, session, url_for
+from flask import flash, redirect, render_template, request, session, url_for
 from Flaskblog.config.config import PASSWORD, USERNAME
 
 
@@ -9,5 +9,6 @@ def login_in():
             error = 'Invalid username or password'
         else:
             session['logged_in'] = True
+            flash('You were logged in')
             return redirect(url_for('show_entries'))
     return render_template('login.html', error=error)
