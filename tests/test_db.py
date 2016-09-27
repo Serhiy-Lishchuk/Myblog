@@ -1,6 +1,6 @@
 import os
-import unittest
 import tempfile
+import unittest
 import Flaskblog
 from Flaskblog import app
 from Flaskblog.db.db import init_db
