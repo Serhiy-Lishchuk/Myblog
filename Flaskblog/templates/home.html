@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Python
+{% endblock %}
+
+{% block content %}
+    {% for message in get_flashed_messages() %}
+                                <div class="flash">{{ message }}</div>
+{% endfor %}
+{% if session.logged_in %}
+    <h3>Admin</h3>
+<a href="{{ url_for('logout') }}"><button type="submit" class="btn btn-danger">log out</button></a>
+    <h4>Upload File</h4>
+  <form id="upload-form" action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+    <span><input type="file" name="file"><button type="submit" class="btn btn-primary">Upload</button></span>
+  </form>
+<form action="{{ url_for('add_entry') }}" method="post" class="add_entry">
+    <center style="margin-top: -200px">
+        <dt>Title:
+        <dd><input type="text" size=30 name="title">
+        <dt>Text:
+        <dd><textarea name="text" rows=5 cols=40></textarea>
+        <dt>Image upload:
+        <dd><input style="margin-left: 10%" type="file" name="image">
+        <dt>Music upload:
+        <dd><input style="margin-left: 10%" type="file" name="music">
+        <dd><input type="submit" value="Share">
+    </center>
+</form>
+{% endif %}
+<ul class="entries" style="margin: 0 auto; width: 500px">
+{% for entry in entries %}
+    <li><h2>{{ entry.title }}</h2>
+        <p>{{ entry.timestamp }}</p>
+        <p>{{ entry.text|safe }}</p>
+        {% if entry.image != "" %}
+        <img src="/static/image/{{ entry.image }}">
+        {% endif %}
+        {% if entry.music != "" %}
+        <br>
+        <audio controls>
+            <source src="/static/music/{{ entry.music }}" type="audio/mp3">
+        </audio>
+        {% endif %}
+{% else %}
+    <li><em>Unbelievable. No entries here so far</em>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,5 @@
+recursive-include Flaskblog/templates *.html
+recursive-include Flaskblog/static *.css
+recursive-include Flaskblog/static/watermark *.ico
+recursive-include Flaskblog/config *.ini
+recursive-include Flaskblog/db *.sql
